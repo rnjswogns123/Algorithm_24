@@ -1,0 +1,3 @@
+import my_info
+my_info.printmyinfo()
+print("VS Code와 github연동 됐습니다.")
