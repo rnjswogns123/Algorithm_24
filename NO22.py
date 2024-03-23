@@ -6,13 +6,13 @@ int main(void) {
 
     int length;
 
-    printf("¹®ÀÚ¿­ÀÇ ÃÖ´ë±æÀÌ ÀÔ·Â: ");
+    printf("ë¬¸ìì—´ì˜ ìµœëŒ€ê¸¸ì´ ì…ë ¥: ");
     scanf("%d", &length);
     while (getchar() != '\n');
 
     char* ptr = (char*)malloc(sizeof(char) * length);
 
-    printf("¹®Àå ÀÔ·Â: ");
+    printf("ë¬¸ì¥ ì…ë ¥: ");
     fgets(ptr, length, stdin);
 
     int i, spnum;
