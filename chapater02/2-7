@@ -1,0 +1,4 @@
+다음의 빅오 표기법들을 실행 시간이 적게 걸리는 것부터 나열하라.
+O(1) O(n) O(n2) O(n3) O(log n) O(n log n) O(n!) O(2n)
+
+답안 : O(1) < O(log n) < O(n) < O(n log n) < O(n2) < O(n3) O(2n) < O(n!)
