@@ -1,0 +1,15 @@
+def time_complexity(n):
+    return n**2 * math.log2(n) + n**3 + 3
+
+def big_o_notation(n):
+    complexity = time_complexity(n)
+    if complexity <= 10 * n**3:
+        return "O(n^3)"
+    elif complexity <= 1000 * n**2 * math.log2(n):
+        return "O(n^2 log n)"
+    else:
+        return "O(n^2 log n)"
+
+n = int(input("Enter a value for n: "))
+result = big_o_notation(n)
+print("The time complexity is", result)
