@@ -1,0 +1,16 @@
+def big_O_notation(n):
+    complexity = n**3 + 10000 * n**2 + 50 * n
+    return complexity
+
+def find_big_O(n):
+    complexity = big_O_notation(n)
+    if complexity <= 10 * n**3:
+        return "O(n^3)"
+    elif complexity <= 10000 * n**2:
+        return "O(n^2)"
+    else:
+        return "O(n)"
+
+n = int(input("Enter a value for n: "))
+result = find_big_O(n)
+print("The time complexity is", result)
