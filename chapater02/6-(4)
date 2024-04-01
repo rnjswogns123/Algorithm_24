@@ -1,6 +1,7 @@
-void ex1(int n) {
-    int count = 0;
-    int i;
-    for (int i = 0; i < n; i++)
-    count++;
-}
+def big_o_notation(n):
+    complexity = 7 * (2 * n) + 3 * n
+    return "O(n)"
+
+n = int(input("Enter a value for n: "))
+result = big_o_notation(n)
+print("The time complexity is", result)
