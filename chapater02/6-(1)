@@ -1,7 +1,7 @@
-function printAllPairs(n) {
-  for (var i = 0; i < n; i++) {  // O(n)
-    for (var j = 0; j < n; j++) {  // O(n)
-      console.log(i, j)
-    }
-  }
-}
+def big_o_notation(n):
+    complexity = n**2 + 10 * n + 8
+    return "O(n^2)"
+
+n = int(input("Enter a value for n: "))
+result = big_o_notation(n)
+print("The time complexity is", result)
