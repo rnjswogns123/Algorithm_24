@@ -1,0 +1,12 @@
+def time_complexity(n):
+    return 3 * n + math.factorial(n)
+
+def big_o_notation(n):
+    complexity = time_complexity(n)
+    return "O(n!)"  # n!은 빅업표기법으로 표현됩니다.
+
+import math
+
+n = int(input("Enter a value for n: "))
+result = big_o_notation(n)
+print("The time complexity is", result)
