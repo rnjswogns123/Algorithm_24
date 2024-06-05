@@ -1,0 +1,93 @@
+#include <iostream>
+#include <vector>
+#include <limits>
+
+using namespace std;
+
+const int INF = numeric_limits<int>::max();
+
+void printPath(vector<vector<int>>& next, int u, int v) {
+    if (next[u][v] == -1) {
+        cout << "경로 없음";
+        return;
+    }
+    vector<int> path;
+    for (int at = u; at != v; at = next[at][v]) {
+        if (at == -1) {
+            cout << "경로 없음";
+            return;
+        }
+        path.push_back(at);
+    }
+    path.push_back(v);
+    for (int i = 0; i < path.size(); ++i) {
+        cout << path[i] << " ";
+    }
+    cout << endl;
+}
+
+void floydWarshall(vector<vector<int>>& graph, int V) {
+    vector<vector<int>> dist = graph;
+    vector<vector<int>> next(V, vector<int>(V, -1));
+
+    for (int i = 0; i < V; ++i) {
+        for (int j = 0; j < V; ++j) {
+            if (graph[i][j] != INF && i != j) {
+                next[i][j] = j;
+            }
+        }
+    }
+
+    for (int k = 0; k < V; ++k) {
+        for (int i = 0; i < V; ++i) {
+            for (int j = 0; j < V; ++j) {
+                if (dist[i][k] != INF && dist[k][j] != INF && dist[i][k] + dist[k][j] < dist[i][j]) {
+                    dist[i][j] = dist[i][k] + dist[k][j];
+                    next[i][j] = next[i][k];
+                }
+            }
+        }
+    }
+
+    for (int i = 0; i < V; ++i) {
+        if (dist[i][i] < 0) {
+            cout << "음수 사이클이 존재합니다.\n";
+            return;
+        }
+    }
+
+    cout << "최단 거리 행렬:\n";
+    for (int i = 0; i < V; ++i) {
+        for (int j = 0; j < V; ++j) {
+            if (dist[i][j] == INF)
+                cout << "INF ";
+            else
+                cout << dist[i][j] << " ";
+        }
+        cout << "\n";
+    }
+
+    cout << "\n최단 경로:\n";
+    for (int i = 0; i < V; ++i) {
+        for (int j = 0; j < V; ++j) {
+            if (i != j) {
+                cout << i << " -> " << j << ": ";
+                printPath(next, i, j);
+            }
+        }
+    }
+}
+
+int main() {
+    int V = 4;
+    vector<vector<int>> graph = {
+        {0, 3, INF, 7},
+        {8, 0, 2, INF},
+        {5, INF, 0, 1},
+        {2, INF, INF, 0}
+    };
+
+    floydWarshall(graph, V);
+
+    return 0;
+}
